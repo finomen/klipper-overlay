@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+
+BINARY=/opt/klipper/klippy/klippy.py 
+ARGS="/etc/klipper/printer.cfg -l /var/log/klipper.log"
+PIDFILE=/var/run/klipper.pid
+
+depend() {
+  need net
+}
+
+start() {
+  ebegin "Starting Klipper"
+  touch /var/log/klipper.log
+  chown klipper:klipper /var/log/klipper.log
+  start-stop-daemon -u klipper -g klipper --background --start --pidfile "${PIDFILE}" --exec "${BINARY}" -- ${ARGS}
+  eend $?
+}
+
+stop() {
+  ebegin "Stopping Klipper"
+  start-stop-daemon --stop --pidfile "${PIDFILE}" --exec "${BINARY}"
+  eend $?
+}

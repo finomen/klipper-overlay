@@ -1,0 +1,9 @@
+diff -ru a/klippy/klippy.py b/klippy/klippy.py
+--- a/klippy/klippy.py	2022-07-24 19:25:13.177998003 -0000
++++ b/klippy/klippy.py	2022-07-24 19:54:19.015997337 -0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2
++#!/usr/bin/env python3
+ # Main code for host side printer firmware
+ #
+ # Copyright (C) 2016-2020  Kevin O'Connor <kevin@koconnor.net>
